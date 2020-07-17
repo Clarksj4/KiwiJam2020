@@ -44,7 +44,11 @@ public class BopIt : MonoBehaviour
         {
             Ray ray = new Ray(rayOrigin.position, transform.position - rayOrigin.position);
             if (Physics.Raycast(ray, out var hit, 1000f))
-                ExclusivelyShowColldier(hit.collider);
+            {
+                Transform transform = hit.transform;
+                Animator buttonAnimator = transform.parent.GetComponentInChildren<Animator>();
+                buttonAnimator.SetTrigger("Depress");
+            }
         }
     }
 
