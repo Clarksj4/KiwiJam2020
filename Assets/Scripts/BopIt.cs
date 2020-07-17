@@ -24,7 +24,7 @@ public class BopIt : MonoBehaviour
 
     private void Start()
     {
-        ExclusivelyShowColldier(null);
+        //ExclusivelyShowColldier(null);
     }
 
     private void OnDrawGizmos()
