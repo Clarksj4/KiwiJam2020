@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class BopIt : MonoBehaviour
@@ -13,27 +14,19 @@ public class BopIt : MonoBehaviour
     [SerializeField]
     private KeyCode keyboardButton = KeyCode.Space;
 
-    // All child colliders
-    private Collider[] colliders;
+    private Bop[] bops;
 
     private void Awake()
     {
-        colliders = GetComponentsInChildren<Collider>();
-        Cursor.visible = false;
+        bops = GetComponentsInChildren<Bop>();
     }
 
     private void Start()
     {
-        //ExclusivelyShowColldier(null);
-    }
+        foreach (Bop bop in bops)
+            bop.Depress();
 
-    private void OnDrawGizmos()
-    {
-        if (rayOrigin != null)
-        {
-            Ray ray = new Ray(rayOrigin.position, transform.position - rayOrigin.position);
-            Gizmos.DrawRay(ray.origin, ray.direction * 1000f);
-        }
+        RaiseRandomBop();
     }
 
     // Update is called once per frame
@@ -42,14 +35,37 @@ public class BopIt : MonoBehaviour
         // If receiving input - BOP IT!
         if (IsInputHappening())
         {
-            Ray ray = new Ray(rayOrigin.position, transform.position - rayOrigin.position);
+            Ray ray = GetInputRay();
             if (Physics.Raycast(ray, out var hit, 1000f))
             {
                 Transform transform = hit.transform;
-                Animator buttonAnimator = transform.parent.GetComponentInChildren<Animator>();
-                buttonAnimator.SetTrigger("Depress");
+                Bop bop = transform.parent.GetComponent<Bop>();
+                DoABopIt(bop);
             }
         }
+    }
+
+    private void RaiseRandomBop(Bop exceptForThisOne = null)
+    {
+        Bop randomBop = bops[Random.Range(0, bops.Length)];
+        while (randomBop == exceptForThisOne)
+            randomBop = bops[Random.Range(0, bops.Length)];
+
+        randomBop.Raise();
+    }
+
+    private void DoABopIt(Bop bop)
+    {
+        // Depress the tapped bop
+        bop.Depress();
+
+        // Raise a different random one
+        RaiseRandomBop(exceptForThisOne: bop);
+    }
+
+    private Ray GetInputRay()
+    {
+        return new Ray(rayOrigin.position, transform.position - rayOrigin.position);
     }
 
     private bool IsInputHappening()
@@ -57,13 +73,6 @@ public class BopIt : MonoBehaviour
         return keyboardInput ? Input.GetKeyUp(keyboardButton) : Input.GetMouseButtonUp(mouseButton);
     }
 
-    private void ExclusivelyShowColldier(Collider collider)
-    {
-        // Turn off all colliders except the given one
-        foreach(Collider child in colliders)
-        {
-            bool active = child == collider;
-            child.GetComponent<Renderer>().enabled = active;
-        }
-    }
+    // TODO: ALL bops except for a random one start down
+    // TODO: When one bop is pressed - a different random one is raised
 }
