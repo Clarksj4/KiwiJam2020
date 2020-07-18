@@ -5472,6 +5472,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: BopIt
       objectReference: {fileID: 0}
+    - target: {fileID: 6087224442226046119, guid: 175f362610c6e204e9df1a7ecf2aeba1,
+        type: 3}
+      propertyPath: keyboardInput
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6087224442226046119, guid: 175f362610c6e204e9df1a7ecf2aeba1,
+        type: 3}
+      propertyPath: sensitivity
+      value: 400
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 175f362610c6e204e9df1a7ecf2aeba1, type: 3}
 --- !u!114 &1097676270 stripped
