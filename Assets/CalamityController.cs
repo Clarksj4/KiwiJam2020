@@ -12,6 +12,8 @@ public class CalamityController : MonoBehaviour
 
     public List<CalamityParticles> RampUpParticles;
 
+    public List<CalamitySound> CalamitySounds;
+
     void Start()
     {
         _calamityStartTime = Time.time;
@@ -24,6 +26,11 @@ public class CalamityController : MonoBehaviour
         foreach (CalamityParticles cp in RampUpParticles)
         {
             cp.Setup();
+        }
+
+        foreach (CalamitySound cs in CalamitySounds)
+        {
+            cs.Setup();
         }
     }
 
@@ -40,6 +47,11 @@ public class CalamityController : MonoBehaviour
         foreach (CalamityParticles cp in RampUpParticles)
         {
             cp.SetProgress(calamityProgress);
+        }
+
+        foreach (CalamitySound cs in CalamitySounds)
+        {
+            cs.SetProgress(calamityProgress);
         }
     }
 }
@@ -92,5 +104,24 @@ public class CalamityParticles
     {
         _mainModule.startSpeedMultiplier = Mathf.Lerp(StartSpeed, TargetSpeed, progress);
         _mainModule.gravityModifierMultiplier = Mathf.Lerp(StartGravity, TargetGravity, progress);
+    }
+}
+
+[System.Serializable]
+public class CalamitySound
+{
+    public AudioSource AudioSource;
+    public float TargetVolume;
+    [HideInInspector]
+    public float StartVolume;
+
+    public void Setup()
+    {
+        StartVolume = AudioSource.volume;
+    }
+
+    public void SetProgress(float progress)
+    {
+        AudioSource.volume = Mathf.Lerp(StartVolume, TargetVolume, progress);
     }
 }
