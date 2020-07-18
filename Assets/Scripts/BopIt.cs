@@ -16,11 +16,13 @@ public class BopIt : MonoBehaviour
     private int mouseButton = 0;
     [SerializeField]
     private KeyCode keyboardButton = KeyCode.Space;
+    private RotationInput rotationInput;
 
     private Bop[] bops;
 
     private void Awake()
     {
+        rotationInput = GetComponent<RotationInput>();
         bops = GetComponentsInChildren<Bop>();
     }
 
@@ -46,6 +48,12 @@ public class BopIt : MonoBehaviour
             if (IsInputHappening())
                 DoABopIt(bop);
         }
+    }
+
+    public void SetEnabled(bool enabled)
+    {
+        this.enabled = enabled;
+        rotationInput.enabled = enabled;
     }
 
     private void RaiseRandomBop(Bop exceptForThisOne = null)
