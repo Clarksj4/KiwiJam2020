@@ -96,7 +96,7 @@ public class GrumbleController : MonoBehaviour
     {
         // Start grumbling again
         ShutTheFuckUp();
-        StartCoroutine(LoopyGrumbles());
+        StartCoroutine(LoopyGrumbles(UnityEngine.Random.Range(0, minTimeBetweenGrumbles)));
     }
 
     private void HandleOnBeingAScaredGuy()
