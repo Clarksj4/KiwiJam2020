@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class GrumbleController : MonoBehaviour
 {
+    // TODO: fix grumbles not obeying min time between grumbles!
+
     [SerializeField]
     private float minTimeBetweenGrumbles = 10f;
     [SerializeField]
