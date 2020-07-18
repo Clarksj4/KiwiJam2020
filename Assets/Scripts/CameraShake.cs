@@ -10,6 +10,7 @@ public class CameraShake : MonoBehaviour
 {
 
     public bool runOnStart = false;//Test-run/Call ShakeCamera() on start
+    public bool foreverShake = false;
 
     public float shakeAmount;//The amount to shake this frame.
     public float shakeDuration;//The duration this frame.
@@ -55,14 +56,14 @@ public class CameraShake : MonoBehaviour
     {
         isRunning = true;
 
-        while (shakeDuration > 0.01f)
+        while (shakeDuration > 0.01f || foreverShake)
         {
             Vector3 rotationAmount = Random.insideUnitSphere * shakeAmount;//A Vector3 to add to the Local Rotation
             rotationAmount.z = 0;//Don't change the Z; it looks funny.
 
             shakePercentage = shakeDuration / startDuration;//Used to set the amount of shake (% * startAmount).
 
-            shakeAmount = startAmount * shakePercentage;//Set the amount of shake (% * startAmount).
+            //shakeAmount = startAmount * shakePercentage;//Set the amount of shake (% * startAmount).
             shakeDuration = Mathf.Lerp(shakeDuration, 0, Time.deltaTime);//Lerp the time, so it is less and tapers off towards the end.
 
 
