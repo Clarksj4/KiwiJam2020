@@ -15,11 +15,17 @@ public class Bop : MonoBehaviour
     [SerializeField]
     private Material unlitMaterial;
     [SerializeField]
+    private Material outlineMaterial;
+    [SerializeField]
+    private Material nonOutlineMaterial;
+    [SerializeField]
     private AudioSource clickAudio;
     [SerializeField]
     private AudioSource popAudio;
     [SerializeField]
     private MeshRenderer mechanismRenderer;
+    [SerializeField]
+    private MeshRenderer borderRenderer;
     private Animator animator;
 
     private int buttonUpHash = Animator.StringToHash("Base Layer.ButtonUp");
@@ -40,6 +46,16 @@ public class Bop : MonoBehaviour
             { buttonRaiseHash, ButtonState.Raise },
             { buttonDepressHash, ButtonState.Depress }
         };
+    }
+
+    public void Select()
+    {
+        borderRenderer.material = outlineMaterial;
+    }
+
+    public void Deselect()
+    {
+        borderRenderer.material = nonOutlineMaterial;
     }
 
     public void Raise()

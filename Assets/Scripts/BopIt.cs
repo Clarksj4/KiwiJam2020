@@ -32,16 +32,16 @@ public class BopIt : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // If receiving input - BOP IT!
-        if (IsInputHappening())
+        Ray ray = GetInputRay();
+        if (Physics.Raycast(ray, out var hit, 1000f))
         {
-            Ray ray = GetInputRay();
-            if (Physics.Raycast(ray, out var hit, 1000f))
-            {
-                Transform transform = hit.transform;
-                Bop bop = transform.parent.GetComponent<Bop>();
+            Transform transform = hit.transform;
+            Bop bop = transform.parent.GetComponent<Bop>();
+            SelectBop(bop);
+
+            // If receiving input - BOP IT!
+            if (IsInputHappening())
                 DoABopIt(bop);
-            }
         }
     }
 
@@ -74,6 +74,13 @@ public class BopIt : MonoBehaviour
     private bool IsInputHappening()
     {
         return keyboardInput ? Input.GetKeyUp(keyboardButton) : Input.GetMouseButtonUp(mouseButton);
+    }
+
+    private void SelectBop(Bop bop)
+    {
+        foreach (Bop child in bops)
+            child.Deselect();
+        bop.Select();
     }
 
     // TODO: ALL bops except for a random one start down
