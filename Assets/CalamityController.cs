@@ -36,7 +36,7 @@ public class CalamityController : MonoBehaviour
 public class CalamityMovement
 {
     public Transform Subject;
-    public Vector3 Movement;
+    public Vector3 EndPosition;
     [HideInInspector]
     public Vector3 StartPosition;
 
@@ -46,13 +46,12 @@ public class CalamityMovement
 
     public void Setup()
     {
-        StartPosition = Subject.localPosition;
+        StartPosition = Subject.position;
         StartRotation = Subject.localRotation.eulerAngles;
     }
 
     public void SetProgress(float progress)
     {
-        Subject.localPosition = Vector3.Lerp(StartPosition, Movement, progress);
-        Subject.SetPositionAndRotation(Vector3.Lerp(StartPosition, Movement, progress), Quaternion.Euler(Vector3.Slerp(StartRotation, Rotation, progress)));
+        Subject.SetPositionAndRotation(Vector3.Lerp(StartPosition, EndPosition, progress), Quaternion.Euler(Vector3.Slerp(StartRotation, StartRotation + Rotation, progress)));
     }
 }
