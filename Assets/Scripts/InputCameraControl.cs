@@ -68,6 +68,8 @@ public class InputCameraControl : MonoBehaviour
             yield return null;
         }
 
+        x = 0;
+        y = 0;
         transform.localRotation = Quaternion.Euler(Vector3.zero);
     }
 }
