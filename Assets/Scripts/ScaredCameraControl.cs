@@ -1,18 +1,34 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ScaredCameraControl : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public event Action OnBeingAScaredyGuy;
+
+    private AudioSource[] scaredAudio;
+    private Animator scaredAnimator;
+
+    private LookUpAnimationControl lookUpAnimationControl;
+    
+    private void Awake()
     {
-        
+        scaredAudio = GetComponents<AudioSource>();
+        scaredAnimator = GetComponent<Animator>();
+        lookUpAnimationControl = GetComponentInChildren<LookUpAnimationControl>();
+
+        lookUpAnimationControl.OnLookUp += HandleOnLookUp;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void HandleOnLookUp()
     {
-        
+        scaredAnimator.SetTrigger("Scared");
+    }
+
+    private void OnVocalizeScaredness()
+    {
+        scaredAudio[UnityEngine.Random.Range(0, scaredAudio.Length)].Play();
+        OnBeingAScaredyGuy?.Invoke();
     }
 }

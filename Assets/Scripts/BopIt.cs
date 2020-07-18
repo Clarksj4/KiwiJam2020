@@ -1,10 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 public class BopIt : MonoBehaviour
 {
+    public event Action OnBop;
+
     [SerializeField]
     private Transform rayOrigin;
     [SerializeField]
@@ -47,9 +50,9 @@ public class BopIt : MonoBehaviour
 
     private void RaiseRandomBop(Bop exceptForThisOne = null)
     {
-        Bop randomBop = bops[Random.Range(0, bops.Length)];
+        Bop randomBop = bops[UnityEngine. Random.Range(0, bops.Length)];
         while (randomBop == exceptForThisOne)
-            randomBop = bops[Random.Range(0, bops.Length)];
+            randomBop = bops[UnityEngine.Random.Range(0, bops.Length)];
 
         randomBop.Raise();
     }
@@ -63,6 +66,8 @@ public class BopIt : MonoBehaviour
 
             // Raise a different random one
             RaiseRandomBop(exceptForThisOne: bop);
+
+            OnBop?.Invoke();
         }
     }
 
@@ -82,7 +87,4 @@ public class BopIt : MonoBehaviour
             child.Deselect();
         bop.Select();
     }
-
-    // TODO: ALL bops except for a random one start down
-    // TODO: When one bop is pressed - a different random one is raised
 }
