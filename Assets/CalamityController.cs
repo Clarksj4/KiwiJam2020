@@ -165,13 +165,24 @@ public class CalamitySound
     [HideInInspector]
     public float StartVolume;
 
+    private float startTime;
+
     public void Setup()
     {
         StartVolume = AudioSource.volume;
+        startTime = Time.time;
     }
 
     public void SetProgress(float progress)
     {
-        AudioSource.volume = Mathf.Lerp(StartVolume, TargetVolume, progress);
+        float elapsedTime = Time.time - startTime;
+        if (elapsedTime < 0.5f)
+        {
+            AudioSource.volume = Mathf.Lerp(0, StartVolume, progress);
+        }
+        else
+        {
+            AudioSource.volume = Mathf.Lerp(StartVolume, TargetVolume, progress);
+        }
     }
 }
