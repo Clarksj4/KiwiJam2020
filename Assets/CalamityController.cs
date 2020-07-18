@@ -53,7 +53,8 @@ public class CalamityController : MonoBehaviour
     void Update()
     {
         float elapsedCalamityTime = Time.time - _calamityStartTime;
-        float calamityProgress = elapsedCalamityTime / CalamityDuration;
+        float linearCalamityProgress = elapsedCalamityTime / CalamityDuration;
+        float calamityProgress = linearCalamityProgress * linearCalamityProgress * linearCalamityProgress * linearCalamityProgress;
 
         _colorGrading.temperature.value = Mathf.Lerp(_whiteBalanceStart, WhiteBalanceTarget, calamityProgress);
         _colorGrading.colorFilter.value = Color.Lerp(_filterStart, FilterTarget, calamityProgress);
@@ -73,6 +74,12 @@ public class CalamityController : MonoBehaviour
             cs.SetProgress(calamityProgress);
         }
     }
+
+    public float EaseInQuad(float start, float end, float value)
+    {
+        end -= start;
+        return end * value * value + start;
+    }
 }
 
 [System.Serializable]
@@ -87,14 +94,20 @@ public class CalamityMovement
     [HideInInspector]
     public Vector3 StartRotation;
 
+    public float TargetScaleFactor;
+    [HideInInspector]
+    public Vector3 StartScale;
+
     public void Setup()
     {
         StartPosition = Subject.position;
         StartRotation = Subject.localRotation.eulerAngles;
+        StartScale = Subject.localScale;
     }
 
     public void SetProgress(float progress)
     {
+        Subject.localScale = StartScale * Mathf.Lerp(1, TargetScaleFactor, progress);
         Subject.SetPositionAndRotation(Vector3.Lerp(StartPosition, EndPosition, progress), Quaternion.Euler(Vector3.Slerp(StartRotation, StartRotation + Rotation, progress)));
     }
 }
