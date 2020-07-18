@@ -36,8 +36,8 @@ public class InputCameraControl : MonoBehaviour
             Vector2 rawInputDelta = GetMouseInput();
             Vector2 smoothedInputDelta = rawInputDelta * sensitivity * Time.deltaTime;
 
-            x = Mathf.Clamp(x + smoothedInputDelta.y, -maxVerticalRotation, maxVerticalRotation);
-            y = Mathf.Clamp(y + -smoothedInputDelta.x, -maxHorizontalRotation, maxHorizontalRotation);
+            x = Mathf.Clamp(x + -smoothedInputDelta.y, -maxVerticalRotation, maxVerticalRotation);
+            y = Mathf.Clamp(y + smoothedInputDelta.x, -maxHorizontalRotation, maxHorizontalRotation);
 
             transform.localRotation = Quaternion.Euler(x, y, 0);
         }
