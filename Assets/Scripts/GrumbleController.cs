@@ -28,8 +28,6 @@ public class GrumbleController : MonoBehaviour
         bopIt.OnBop += HandleOnBop;
     }
 
-
-
     private IEnumerator Start()
     {
         // Wait a little bit before grumbling
@@ -38,7 +36,7 @@ public class GrumbleController : MonoBehaviour
         StartCoroutine(LoopyGrumbles());
     }
 
-    private void StopGrumbles()
+    private void ShutTheFuckUp()
     {
         StopAllCoroutines();
 
@@ -47,22 +45,28 @@ public class GrumbleController : MonoBehaviour
         currentPlayer = null;
     }
 
+    // One scoop of 'That One'
     private void ExclaimThatOne()
     {
         currentPlayer = thatOnes[UnityEngine.Random.Range(0, thatOnes.Length)];
         currentPlayer.Play();
     }
 
+    // A single unit of grumble
     private void Grumble()
     {
-        currentPlayer = grumbles[UnityEngine.Random.Range(0, grumbles.Length)];
-        currentPlayer.Play();
+        if (currentPlayer == null)
+        {
+            currentPlayer = grumbles[UnityEngine.Random.Range(0, grumbles.Length)];
+            currentPlayer.Play();
+        }
     }
 
     private IEnumerator DoExclaimThatOne()
     {
         ExclaimThatOne();
         yield return StartCoroutine(WaitForPlayerToFinish());
+        ShutTheFuckUp();
         StartCoroutine(LoopyGrumbles());
     }
 
@@ -74,8 +78,10 @@ public class GrumbleController : MonoBehaviour
         currentPlayer = null;
     }
 
-    private IEnumerator LoopyGrumbles()
+    private IEnumerator LoopyGrumbles(float initialDelay = 0)
     {
+        yield return new WaitForSeconds(initialDelay);
+
         while (true)
         {
             Grumble();
@@ -89,21 +95,21 @@ public class GrumbleController : MonoBehaviour
     private void HandleOnLookDown()
     {
         // Start grumbling again
-        StopGrumbles();
+        ShutTheFuckUp();
         StartCoroutine(LoopyGrumbles());
     }
 
     private void HandleOnBeingAScaredGuy()
     {
         // Too scared for grumbles!
-        StopGrumbles();
+        ShutTheFuckUp();
     }
 
     private void HandleOnBop()
     {
         if (currentPlayer == null && UnityEngine.Random.Range(0f, 1f) > 0.5f)
         {
-            StopGrumbles();
+            ShutTheFuckUp();
             StartCoroutine(DoExclaimThatOne());
         }
     }
