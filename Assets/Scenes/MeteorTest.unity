@@ -702,6 +702,8 @@ MonoBehaviour:
     StartPosition: {x: 0, y: 0, z: 0}
     Rotation: {x: 0, y: 0, z: 0}
     StartRotation: {x: 0, y: 0, z: 0}
+  WhiteBalanceTarget: 100
+  FilterTarget: {r: 1, g: 0.514151, b: 0.6978729, a: 1}
   RampUpParticles:
   - ParticleSystem: {fileID: 623939786}
     TargetSpeed: 40
@@ -720,7 +722,6 @@ MonoBehaviour:
   - AudioSource: {fileID: 608751637}
     TargetVolume: 1
     StartVolume: 0
-  PostTargetTint: {r: 0, g: 0, b: 0, a: 0}
 --- !u!4 &243931769
 Transform:
   m_ObjectHideFlags: 0
