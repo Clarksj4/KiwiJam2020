@@ -33,6 +33,9 @@ public class CalamityController : MonoBehaviour
 
     private bool endgame;
 
+    private float endgameStartTime;
+    private float elapsedCalamityTimeAtStartOfEnd;
+
     void Start()
     {
         _calamityStartTime = Time.time;
@@ -97,7 +100,18 @@ public class CalamityController : MonoBehaviour
             if (linearCalamityProgress >= 1)
             {
                 endgame = true;
-                TriggerEndGame();
+                endgameStartTime = Time.time;
+                elapsedCalamityTimeAtStartOfEnd = elapsedCalamityTime;
+            }
+        }
+        else
+        {
+            float elapsedEndGameTime = Time.time - endgameStartTime;
+            float totalTime = elapsedCalamityTimeAtStartOfEnd + elapsedCalamityTimeAtStartOfEnd;
+
+            if (elapsedEndGameTime > 3)
+            {
+                ResetGame();
             }
         }
     }
@@ -106,25 +120,6 @@ public class CalamityController : MonoBehaviour
     {
         end -= start;
         return end * value * value + start;
-    }
-
-    public void TriggerEndGame()
-    {
-        StartCoroutine(EndGameTimer());
-    }
-
-    public IEnumerator EndGameTimer()
-    {
-        float endTime = 0;
-        while (endTime < 3f)
-        {
-            // do end time timed things
-
-            endTime += Time.deltaTime;
-            yield return null;
-        }
-
-        ResetGame();
     }
 
     public void ResetGame()
