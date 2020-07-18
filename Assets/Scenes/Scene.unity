@@ -285,9 +285,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   litMaterial: {fileID: 2100000, guid: b973aea997ce37442aa1f935ba893125, type: 2}
   unlitMaterial: {fileID: 2100000, guid: 4e90576476b8c3545aaa6e851d386773, type: 2}
+  outlineMaterial: {fileID: 2100000, guid: 5d41891fb8b139e42a45cd8985716d5b, type: 2}
+  nonOutlineMaterial: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
   clickAudio: {fileID: 227673840}
   popAudio: {fileID: 227673839}
   mechanismRenderer: {fileID: 618843343}
+  borderRenderer: {fileID: 1746825367}
 --- !u!82 &227673839
 AudioSource:
   m_ObjectHideFlags: 0
@@ -851,7 +854,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &747967518
 GameObject:
@@ -977,9 +980,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   litMaterial: {fileID: 2100000, guid: b973aea997ce37442aa1f935ba893125, type: 2}
   unlitMaterial: {fileID: 2100000, guid: 4e90576476b8c3545aaa6e851d386773, type: 2}
+  outlineMaterial: {fileID: 2100000, guid: 5d41891fb8b139e42a45cd8985716d5b, type: 2}
+  nonOutlineMaterial: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
   clickAudio: {fileID: 227673840}
   popAudio: {fileID: 227673839}
   mechanismRenderer: {fileID: 976530255}
+  borderRenderer: {fileID: 1454245793}
 --- !u!82 &791734218
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1254,7 +1260,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
 --- !u!114 &963194229
 MonoBehaviour:
@@ -1583,9 +1589,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   litMaterial: {fileID: 2100000, guid: b973aea997ce37442aa1f935ba893125, type: 2}
   unlitMaterial: {fileID: 2100000, guid: 4e90576476b8c3545aaa6e851d386773, type: 2}
+  outlineMaterial: {fileID: 2100000, guid: 5d41891fb8b139e42a45cd8985716d5b, type: 2}
+  nonOutlineMaterial: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
   clickAudio: {fileID: 227673840}
   popAudio: {fileID: 227673839}
   mechanismRenderer: {fileID: 1001746954}
+  borderRenderer: {fileID: 102774631}
 --- !u!82 &1362527408
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2017,7 +2026,7 @@ Transform:
   - {fileID: 2065344402}
   - {fileID: 791734215}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1543226467
 MonoBehaviour:
@@ -2120,9 +2129,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   litMaterial: {fileID: 2100000, guid: b973aea997ce37442aa1f935ba893125, type: 2}
   unlitMaterial: {fileID: 2100000, guid: 4e90576476b8c3545aaa6e851d386773, type: 2}
+  outlineMaterial: {fileID: 2100000, guid: 5d41891fb8b139e42a45cd8985716d5b, type: 2}
+  nonOutlineMaterial: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
   clickAudio: {fileID: 227673840}
   popAudio: {fileID: 227673839}
   mechanismRenderer: {fileID: 667456669}
+  borderRenderer: {fileID: 1807342116}
 --- !u!82 &1659937327
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2532,7 +2544,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1725938298
 MonoBehaviour:
@@ -3056,9 +3068,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   litMaterial: {fileID: 2100000, guid: b973aea997ce37442aa1f935ba893125, type: 2}
   unlitMaterial: {fileID: 2100000, guid: 4e90576476b8c3545aaa6e851d386773, type: 2}
+  outlineMaterial: {fileID: 2100000, guid: 5d41891fb8b139e42a45cd8985716d5b, type: 2}
+  nonOutlineMaterial: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
   clickAudio: {fileID: 227673840}
   popAudio: {fileID: 227673839}
   mechanismRenderer: {fileID: 1706595520}
+  borderRenderer: {fileID: 1697372483}
 --- !u!82 &2008904622
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3321,9 +3336,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   litMaterial: {fileID: 2100000, guid: b973aea997ce37442aa1f935ba893125, type: 2}
   unlitMaterial: {fileID: 2100000, guid: 4e90576476b8c3545aaa6e851d386773, type: 2}
+  outlineMaterial: {fileID: 2100000, guid: 5d41891fb8b139e42a45cd8985716d5b, type: 2}
+  nonOutlineMaterial: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
   clickAudio: {fileID: 227673840}
   popAudio: {fileID: 227673839}
   mechanismRenderer: {fileID: 1764118686}
+  borderRenderer: {fileID: 1823862731}
 --- !u!82 &2065344405
 AudioSource:
   m_ObjectHideFlags: 0
