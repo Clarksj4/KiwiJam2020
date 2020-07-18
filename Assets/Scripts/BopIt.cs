@@ -50,6 +50,15 @@ public class BopIt : CalamityIncreaser
         }
     }
 
+    public override void SetCalamity(float progress)
+    {
+        base.SetCalamity(progress);
+
+        float volume = Mathf.Clamp(1 - progress, 0.1f, 1f);
+        foreach (Bop bop in bops)
+            bop.SetVolume(volume);
+    }
+
     public void SetEnabled(bool enabled)
     {
         this.enabled = enabled;

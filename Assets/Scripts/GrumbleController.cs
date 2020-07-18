@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GrumbleController : MonoBehaviour
+public class GrumbleController : CalamityIncreaser
 {
     [SerializeField]
     private float minTimeBetweenGrumbles = 10f;
@@ -41,6 +41,17 @@ public class GrumbleController : MonoBehaviour
 
             yield return new WaitForSeconds(UnityEngine.Random.Range(minTimeBetweenGrumbles, maxTimeBetweenGrumbles));
         }
+    }
+
+    public override void SetCalamity(float progress)
+    {
+        base.SetCalamity(progress);
+
+        float volume = Mathf.Clamp(1 - progress, 0.1f, 1f);
+        foreach (AudioSource audio in grumbles)
+            audio.volume = volume;
+        foreach (AudioSource audio in thatOnes)
+            audio.volume = volume;
     }
 
     private void ShutTheFuckUp()

@@ -83,6 +83,12 @@ public class Bop : MonoBehaviour
         throw new InvalidOperationException("None of these states work you idiot!");
     }
 
+    public void SetVolume(float volume)
+    {
+        popAudio.volume = volume;
+        clickAudio.volume = volume;
+    }
+
     private void Pop()
     {
         popAudio.Play();

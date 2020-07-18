@@ -598,6 +598,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac117754e512b714690e6ed3780882cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &870564278 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3306497666620337371, guid: 5e980d22fb6205c41ae497b2f0c33293,
+    type: 3}
+  m_PrefabInstance: {fileID: 2048138065}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 813045c7cf718374eb9af34b19b0e834, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &871870802
 GameObject:
   m_ObjectHideFlags: 0
@@ -5768,11 +5780,6 @@ PrefabInstance:
       propertyPath: bopIt
       value: 
       objectReference: {fileID: 1097676270}
-    - target: {fileID: 6616534079475054267, guid: 4c6ceb40858d0904d9ffa9ea3d860311,
-        type: 3}
-      propertyPath: calamityFactor
-      value: 10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c6ceb40858d0904d9ffa9ea3d860311, type: 3}
 --- !u!4 &1947045528 stripped
@@ -5999,7 +6006,7 @@ PrefabInstance:
     - target: {fileID: 2674400690234001507, guid: a149fe1ec879c184b80ded15fae4d53e,
         type: 3}
       propertyPath: CalamityIncreasers.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2674400690234001507, guid: a149fe1ec879c184b80ded15fae4d53e,
         type: 3}
@@ -6046,6 +6053,16 @@ PrefabInstance:
       propertyPath: CalamityDuration
       value: 60
       objectReference: {fileID: 0}
+    - target: {fileID: 2674400690234001507, guid: a149fe1ec879c184b80ded15fae4d53e,
+        type: 3}
+      propertyPath: CalamityIncreasers.Array.data[1]
+      value: 
+      objectReference: {fileID: 1097676270}
+    - target: {fileID: 2674400690234001507, guid: a149fe1ec879c184b80ded15fae4d53e,
+        type: 3}
+      propertyPath: CalamityIncreasers.Array.data[2]
+      value: 
+      objectReference: {fileID: 870564278}
     - target: {fileID: 2674400690234001516, guid: a149fe1ec879c184b80ded15fae4d53e,
         type: 3}
       propertyPath: m_Name
