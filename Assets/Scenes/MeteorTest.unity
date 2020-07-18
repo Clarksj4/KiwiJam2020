@@ -6005,11 +6005,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2674400690234001507, guid: a149fe1ec879c184b80ded15fae4d53e,
         type: 3}
-      propertyPath: CalamityIncreasers.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2674400690234001507, guid: a149fe1ec879c184b80ded15fae4d53e,
-        type: 3}
       propertyPath: CalamityMovements.Array.data[0].Subject
       value: 
       objectReference: {fileID: 1030454101}
@@ -6050,11 +6045,6 @@ PrefabInstance:
       objectReference: {fileID: 792531284}
     - target: {fileID: 2674400690234001507, guid: a149fe1ec879c184b80ded15fae4d53e,
         type: 3}
-      propertyPath: CalamityDuration
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 2674400690234001507, guid: a149fe1ec879c184b80ded15fae4d53e,
-        type: 3}
       propertyPath: CalamityIncreasers.Array.data[1]
       value: 
       objectReference: {fileID: 1097676270}
@@ -6063,6 +6053,16 @@ PrefabInstance:
       propertyPath: CalamityIncreasers.Array.data[2]
       value: 
       objectReference: {fileID: 870564278}
+    - target: {fileID: 2674400690234001507, guid: a149fe1ec879c184b80ded15fae4d53e,
+        type: 3}
+      propertyPath: Sun
+      value: 
+      objectReference: {fileID: 6837822013696331154}
+    - target: {fileID: 2674400690234001507, guid: a149fe1ec879c184b80ded15fae4d53e,
+        type: 3}
+      propertyPath: CalamityDuration
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2674400690234001516, guid: a149fe1ec879c184b80ded15fae4d53e,
         type: 3}
       propertyPath: m_Name
@@ -6499,3 +6499,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bcafd3900270200438eaa342ea083513, type: 3}
+--- !u!108 &6837822013696331154 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 6837822014322580640, guid: bcafd3900270200438eaa342ea083513,
+    type: 3}
+  m_PrefabInstance: {fileID: 6837822013696331153}
+  m_PrefabAsset: {fileID: 0}

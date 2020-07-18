@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 967d8451a6137704fa7f8575b4ca21c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CalamityDuration: 10
+  CalamityDuration: 60
   CalamityMovements:
   - Subject: {fileID: 0}
     EndPosition: {x: -120, y: 0, z: 0}
@@ -86,3 +86,9 @@ MonoBehaviour:
   - AudioSource: {fileID: 0}
     TargetVolume: 1
     StartVolume: 0
+  CalamityIncreasers:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  Sun: {fileID: 0}
+  TargetSunIntensity: 5

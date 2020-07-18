@@ -27,6 +27,12 @@ public class CalamityController : MonoBehaviour
 
     public List<CalamityIncreaser> CalamityIncreasers;
 
+    public Light Sun;
+    private float startSunIntensity;
+    public float TargetSunIntensity;
+
+    private bool endgame;
+
     void Start()
     {
         _calamityStartTime = Time.time;
@@ -36,6 +42,8 @@ public class CalamityController : MonoBehaviour
         _whiteBalanceStart = _colorGrading.temperature.value;
 
         _filterStart = _colorGrading.colorFilter.value;
+
+        startSunIntensity = Sun.intensity;
 
         foreach (CalamityMovement cm in CalamityMovements)
         {
@@ -62,6 +70,8 @@ public class CalamityController : MonoBehaviour
         _colorGrading.temperature.value = Mathf.Lerp(_whiteBalanceStart, WhiteBalanceTarget, calamityProgress);
         _colorGrading.colorFilter.value = Color.Lerp(_filterStart, FilterTarget, calamityProgress);
 
+        Sun.intensity = Mathf.Lerp(startSunIntensity, TargetSunIntensity, calamityProgress);
+
         foreach (CalamityMovement cm in CalamityMovements)
         {
             cm.SetProgress(calamityProgress);
@@ -81,6 +91,15 @@ public class CalamityController : MonoBehaviour
         {
             ic.SetCalamity(calamityProgress);
         }
+
+        if (!endgame)
+        {
+            if (linearCalamityProgress >= 1)
+            {
+                endgame = true;
+                TriggerEndGame();
+            }
+        }
     }
 
     public float EaseInQuad(float start, float end, float value)
@@ -91,7 +110,21 @@ public class CalamityController : MonoBehaviour
 
     public void TriggerEndGame()
     {
+        StartCoroutine(EndGameTimer());
+    }
 
+    public IEnumerator EndGameTimer()
+    {
+        float endTime = 0;
+        while (endTime < 3f)
+        {
+            // do end time timed things
+
+            endTime += Time.deltaTime;
+            yield return null;
+        }
+
+        ResetGame();
     }
 
     public void ResetGame()
