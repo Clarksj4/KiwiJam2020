@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class GrumbleController : MonoBehaviour
 {
-    // TODO: fix grumbles not obeying min time between grumbles!
-
     [SerializeField]
     private float minTimeBetweenGrumbles = 10f;
     [SerializeField]
@@ -22,6 +20,8 @@ public class GrumbleController : MonoBehaviour
     [SerializeField]
     private AudioSource[] thatOnes;
     private AudioSource currentPlayer;
+    private Coroutine audioCoroutine;
+    private bool lookingDown = true;
 
     private void Awake()
     {
@@ -32,87 +32,74 @@ public class GrumbleController : MonoBehaviour
 
     private IEnumerator Start()
     {
-        // Wait a little bit before grumbling
         yield return new WaitForSeconds(UnityEngine.Random.Range(0, minTimeBetweenGrumbles));
 
-        StartCoroutine(LoopyGrumbles());
+        while (true)
+        {
+            if (lookingDown)
+                Grumble();
+
+            yield return new WaitForSeconds(UnityEngine.Random.Range(minTimeBetweenGrumbles, maxTimeBetweenGrumbles));
+        }
     }
 
     private void ShutTheFuckUp()
     {
-        StopAllCoroutines();
+        if (audioCoroutine != null)
+            StopCoroutine(audioCoroutine);
 
         if (currentPlayer != null)
             currentPlayer.Stop();
+
         currentPlayer = null;
     }
 
     // One scoop of 'That One'
     private void ExclaimThatOne()
     {
-        currentPlayer = thatOnes[UnityEngine.Random.Range(0, thatOnes.Length)];
-        currentPlayer.Play();
+        if (currentPlayer == null)
+            audioCoroutine = StartCoroutine(PlaySound(thatOnes[UnityEngine.Random.Range(0, thatOnes.Length)]));
     }
 
     // A single unit of grumble
     private void Grumble()
     {
         if (currentPlayer == null)
-        {
-            currentPlayer = grumbles[UnityEngine.Random.Range(0, grumbles.Length)];
-            currentPlayer.Play();
-        }
+            audioCoroutine = StartCoroutine(PlaySound(grumbles[UnityEngine.Random.Range(0, grumbles.Length)]));
     }
 
-    private IEnumerator DoExclaimThatOne()
+    private IEnumerator PlaySound(AudioSource source)
     {
-        ExclaimThatOne();
-        yield return StartCoroutine(WaitForPlayerToFinish());
-        ShutTheFuckUp();
-        StartCoroutine(LoopyGrumbles());
-    }
+        currentPlayer = source;
+        source.Play();
 
-    private IEnumerator WaitForPlayerToFinish()
-    {
-        while (currentPlayer != null && currentPlayer.isPlaying)
+        while (currentPlayer != null &&
+               currentPlayer.isPlaying)
             yield return null;
 
         currentPlayer = null;
     }
 
-    private IEnumerator LoopyGrumbles(float initialDelay = 0)
-    {
-        yield return new WaitForSeconds(initialDelay);
 
-        while (true)
-        {
-            Grumble();
-
-            yield return StartCoroutine(WaitForPlayerToFinish());
-
-            yield return new WaitForSeconds(UnityEngine.Random.Range(minTimeBetweenGrumbles, maxTimeBetweenGrumbles));
-        }
-    }
+    //
+    // Event handling
+    //
 
     private void HandleOnLookDown()
     {
-        // Start grumbling again
-        ShutTheFuckUp();
-        StartCoroutine(LoopyGrumbles(UnityEngine.Random.Range(0, minTimeBetweenGrumbles)));
+        lookingDown = true;
     }
 
     private void HandleOnBeingAScaredGuy()
     {
         // Too scared for grumbles!
         ShutTheFuckUp();
+        lookingDown = false;
     }
 
     private void HandleOnBop()
     {
-        if (currentPlayer == null && UnityEngine.Random.Range(0f, 1f) > 0.5f)
-        {
-            ShutTheFuckUp();
-            StartCoroutine(DoExclaimThatOne());
-        }
+        if (currentPlayer == null && UnityEngine.Random.Range(0f, 1f) > 0.4f)
+            ExclaimThatOne();
     }
 }
