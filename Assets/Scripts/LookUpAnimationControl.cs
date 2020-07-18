@@ -1,9 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class LookUpAnimationControl : MonoBehaviour
 {
+    public event Action OnLookUp;
+    public event Action OnLookDown;
+
     private Animator lookUpAnimator;
     private InputCameraControl inputCameraControl;
     private bool up;
@@ -28,11 +32,13 @@ public class LookUpAnimationControl : MonoBehaviour
     {
         up = true;
         inputCameraControl.SetEnabled(true);
+        OnLookUp?.Invoke();
     }
 
     private void OnLookingDown()
     {
         up = false;
         inputCameraControl.SetEnabled(false);
+        OnLookDown?.Invoke();
     }
 }
