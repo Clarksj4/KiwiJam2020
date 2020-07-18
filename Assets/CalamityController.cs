@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 
 public class CalamityController : MonoBehaviour
 {
@@ -10,16 +11,28 @@ public class CalamityController : MonoBehaviour
 
     private float _calamityStartTime;
 
+    private float _whiteBalanceStart;
+    public float WhiteBalanceTarget;
+
+    private Color _filterStart;
+    public Color FilterTarget;
+
     public List<CalamityParticles> RampUpParticles;
 
     public List<CalamitySound> CalamitySounds;
 
-    private Color _postStartTint;
-    public Color PostTargetTint;
+    private PostProcessVolume _activePostVolume;
+    private ColorGrading _colorGrading;
 
     void Start()
     {
         _calamityStartTime = Time.time;
+
+        _activePostVolume = FindObjectOfType<PostProcessVolume>();
+        _activePostVolume.profile.TryGetSettings(out _colorGrading);
+        _whiteBalanceStart = _colorGrading.temperature.value;
+
+        _filterStart = _colorGrading.colorFilter.value;
 
         foreach (CalamityMovement cm in CalamityMovements)
         {
@@ -41,6 +54,9 @@ public class CalamityController : MonoBehaviour
     {
         float elapsedCalamityTime = Time.time - _calamityStartTime;
         float calamityProgress = elapsedCalamityTime / CalamityDuration;
+
+        _colorGrading.temperature.value = Mathf.Lerp(_whiteBalanceStart, WhiteBalanceTarget, calamityProgress);
+        _colorGrading.colorFilter.value = Color.Lerp(_filterStart, FilterTarget, calamityProgress);
 
         foreach (CalamityMovement cm in CalamityMovements)
         {
