@@ -10,6 +10,8 @@ public class LookUpAnimationControl : MonoBehaviour
 
     private Animator lookUpAnimator;
     private InputCameraControl inputCameraControl;
+    [SerializeField]
+    private BopIt bopIt;
     private bool up;
 
     private void Awake()
@@ -32,6 +34,7 @@ public class LookUpAnimationControl : MonoBehaviour
     {
         up = true;
         inputCameraControl.SetEnabled(true);
+        bopIt.SetEnabled(false);
         OnLookUp?.Invoke();
     }
 
@@ -39,6 +42,7 @@ public class LookUpAnimationControl : MonoBehaviour
     {
         up = false;
         inputCameraControl.SetEnabled(false);
+        bopIt.SetEnabled(true);
         OnLookDown?.Invoke();
     }
 }
