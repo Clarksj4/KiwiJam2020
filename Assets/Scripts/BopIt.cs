@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class BopIt : MonoBehaviour
+public class BopIt : CalamityIncreaser
 {
     public event Action OnBop;
 

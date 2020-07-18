@@ -574,6 +574,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &792531284 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6616534079475054267, guid: 4c6ceb40858d0904d9ffa9ea3d860311,
+    type: 3}
+  m_PrefabInstance: {fileID: 1808453577}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3038d98f7616e5b42a3231317293f896, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &824373247 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 969686883989005254, guid: 4c6ceb40858d0904d9ffa9ea3d860311,
@@ -5756,6 +5768,11 @@ PrefabInstance:
       propertyPath: bopIt
       value: 
       objectReference: {fileID: 1097676270}
+    - target: {fileID: 6616534079475054267, guid: 4c6ceb40858d0904d9ffa9ea3d860311,
+        type: 3}
+      propertyPath: calamityFactor
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c6ceb40858d0904d9ffa9ea3d860311, type: 3}
 --- !u!4 &1947045528 stripped
@@ -5981,6 +5998,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2674400690234001507, guid: a149fe1ec879c184b80ded15fae4d53e,
         type: 3}
+      propertyPath: CalamityIncreasers.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2674400690234001507, guid: a149fe1ec879c184b80ded15fae4d53e,
+        type: 3}
       propertyPath: CalamityMovements.Array.data[0].Subject
       value: 
       objectReference: {fileID: 1030454101}
@@ -6014,6 +6036,16 @@ PrefabInstance:
       propertyPath: CalamitySounds.Array.data[1].AudioSource
       value: 
       objectReference: {fileID: 608751637}
+    - target: {fileID: 2674400690234001507, guid: a149fe1ec879c184b80ded15fae4d53e,
+        type: 3}
+      propertyPath: CalamityIncreasers.Array.data[0]
+      value: 
+      objectReference: {fileID: 792531284}
+    - target: {fileID: 2674400690234001507, guid: a149fe1ec879c184b80ded15fae4d53e,
+        type: 3}
+      propertyPath: CalamityDuration
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 2674400690234001516, guid: a149fe1ec879c184b80ded15fae4d53e,
         type: 3}
       propertyPath: m_Name

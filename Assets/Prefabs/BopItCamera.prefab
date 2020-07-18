@@ -818,6 +818,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3038d98f7616e5b42a3231317293f896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  calamityFactor: 10
   runOnStart: 1
   foreverShake: 1
   shakeAmount: 0

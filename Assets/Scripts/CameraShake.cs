@@ -6,9 +6,9 @@
 using UnityEngine;
 using System.Collections;
 
-public class CameraShake : MonoBehaviour
+public class CameraShake : CalamityIncreaser
 {
-
+    public float calamityFactor = 2.5f;
     public bool runOnStart = false;//Test-run/Call ShakeCamera() on start
     public bool foreverShake = false;
 
@@ -38,6 +38,16 @@ public class CameraShake : MonoBehaviour
         startDuration = shakeDuration;//Set default (start) values
 
         if (!isRunning) StartCoroutine(Shake());//Only call the coroutine if it isn't currently running. Otherwise, just set the variables.
+    }
+
+    public override void SetCalamity(float progress)
+    {
+        base.SetCalamity(progress);
+
+        shakeAmount = progress * calamityFactor;
+
+        if (progress >= 1)
+            print("<<<<<");
     }
 
     public void ShakeCamera(float amount, float duration)
