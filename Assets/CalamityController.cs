@@ -94,7 +94,7 @@ public class CalamityMovement
     [HideInInspector]
     public Vector3 StartRotation;
 
-    public float TargetScaleFactor;
+    public float TargetScaleFactor = 1;
     [HideInInspector]
     public Vector3 StartScale;
 

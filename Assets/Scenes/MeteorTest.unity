@@ -692,16 +692,22 @@ MonoBehaviour:
     StartPosition: {x: 0, y: 0, z: 0}
     Rotation: {x: 0, y: 0, z: 0}
     StartRotation: {x: 0, y: 0, z: 0}
+    TargetScaleFactor: 1
+    StartScale: {x: 0, y: 0, z: 0}
   - Subject: {fileID: 1354071226}
     EndPosition: {x: 120, y: 0, z: -30}
     StartPosition: {x: 0, y: 0, z: 0}
     Rotation: {x: 0, y: 0, z: 0}
     StartRotation: {x: 0, y: 0, z: 0}
+    TargetScaleFactor: 1
+    StartScale: {x: 0, y: 0, z: 0}
   - Subject: {fileID: 1020812698}
     EndPosition: {x: 457.12, y: 92.6, z: 338.4}
     StartPosition: {x: 0, y: 0, z: 0}
     Rotation: {x: 0, y: 0, z: 0}
     StartRotation: {x: 0, y: 0, z: 0}
+    TargetScaleFactor: 2
+    StartScale: {x: 0, y: 0, z: 0}
   WhiteBalanceTarget: 100
   FilterTarget: {r: 1, g: 0.514151, b: 0.6978729, a: 1}
   RampUpParticles:
