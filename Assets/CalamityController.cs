@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.SceneManagement;
 
 public class CalamityController : MonoBehaviour
 {
@@ -23,6 +24,8 @@ public class CalamityController : MonoBehaviour
 
     private PostProcessVolume _activePostVolume;
     private ColorGrading _colorGrading;
+
+    public List<CalamityIncreaser> CalamityIncreasers;
 
     void Start()
     {
@@ -73,12 +76,27 @@ public class CalamityController : MonoBehaviour
         {
             cs.SetProgress(calamityProgress);
         }
+
+        foreach (CalamityIncreaser ic in CalamityIncreasers)
+        {
+            ic.SetCalamity(calamityProgress);
+        }
     }
 
     public float EaseInQuad(float start, float end, float value)
     {
         end -= start;
         return end * value * value + start;
+    }
+
+    public void TriggerEndGame()
+    {
+
+    }
+
+    public void ResetGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
 
