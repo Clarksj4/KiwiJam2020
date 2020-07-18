@@ -673,6 +673,7 @@ GameObject:
   - component: {fileID: 969686884625091879}
   - component: {fileID: 969686884625091878}
   - component: {fileID: 8429254045080450548}
+  - component: {fileID: 6616534079475054267}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -805,3 +806,21 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!114 &6616534079475054267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 969686884625091877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3038d98f7616e5b42a3231317293f896, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  runOnStart: 1
+  foreverShake: 1
+  shakeAmount: 0
+  shakeDuration: 10
+  smooth: 1
+  smoothAmount: 5
