@@ -56,11 +56,14 @@ public class BopIt : MonoBehaviour
 
     private void DoABopIt(Bop bop)
     {
-        // Depress the tapped bop
-        bop.Depress();
+        if (bop.GetCurrentState() == ButtonState.Up)
+        {
+            // Depress the tapped bop
+            bop.Depress();
 
-        // Raise a different random one
-        RaiseRandomBop(exceptForThisOne: bop);
+            // Raise a different random one
+            RaiseRandomBop(exceptForThisOne: bop);
+        }
     }
 
     private Ray GetInputRay()
