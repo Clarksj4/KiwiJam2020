@@ -14,6 +14,9 @@ public class CalamityController : MonoBehaviour
 
     public List<CalamitySound> CalamitySounds;
 
+    private Color _postStartTint;
+    public Color PostTargetTint;
+
     void Start()
     {
         _calamityStartTime = Time.time;
