@@ -702,7 +702,7 @@ MonoBehaviour:
     TargetScaleFactor: 1
     StartScale: {x: 0, y: 0, z: 0}
   - Subject: {fileID: 1020812698}
-    EndPosition: {x: 457.12, y: 92.6, z: 338.4}
+    EndPosition: {x: 475.71, y: 103.7, z: 351.1}
     StartPosition: {x: 0, y: 0, z: 0}
     Rotation: {x: 0, y: 0, z: 0}
     StartRotation: {x: 0, y: 0, z: 0}
