@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +10,16 @@ public enum ButtonState
 
 public class Bop : MonoBehaviour
 {
+    [SerializeField]
+    private Material litMaterial;
+    [SerializeField]
+    private Material unlitMaterial;
+    [SerializeField]
+    private AudioSource clickAudio;
+    [SerializeField]
+    private AudioSource popAudio;
+    [SerializeField]
+    private MeshRenderer mechanismRenderer;
     private Animator animator;
 
     private int buttonUpHash = Animator.StringToHash("Base Layer.ButtonUp");
@@ -34,11 +45,15 @@ public class Bop : MonoBehaviour
     public void Raise()
     {
         animator.SetTrigger("Raise");
+
+        mechanismRenderer.material = unlitMaterial;
     }
 
     public void Depress()
     {
         animator.SetTrigger("Depress");
+
+        mechanismRenderer.material = litMaterial;
     }
 
     public ButtonState GetCurrentState()
@@ -49,6 +64,16 @@ public class Bop : MonoBehaviour
                 return kvp.Value;
         }
 
-        throw new System.InvalidOperationException("None of these states work you idiot!");
+        throw new InvalidOperationException("None of these states work you idiot!");
+    }
+
+    private void Pop()
+    {
+        popAudio.Play();
+    }
+
+    private void Click()
+    {
+        clickAudio.Play();
     }
 }
