@@ -5,19 +5,21 @@ using UnityEngine.UI;
 
 public class PhoneCall : CalamityIncreaser
 {
-    private CameraShake cameraShake;
+    [SerializeField]
+    private float vibrateSensitivity = 0.1f;
     [SerializeField]
     private AudioSource vibrationSound;
     [SerializeField]
     private GameObject screen;
     private Text callerText;
     private Image callerImage;
+    private new Rigidbody rigidbody;
 
     private Coroutine phoneCall;
 
     private void Awake()
     {
-        cameraShake = GetComponentInChildren<CameraShake>();
+        rigidbody = GetComponent<Rigidbody>();
         screen.SetActive(false);
         //phoneCall = StartCoroutine(DoCall());
     }
@@ -30,7 +32,7 @@ public class PhoneCall : CalamityIncreaser
 
         vibrationSound.volume = volume;
 
-        if (progress > 0.125f && phoneCall == null)
+        if (progress > 0.01f && phoneCall == null)
             phoneCall = StartCoroutine(DoCall());
     }
 
@@ -52,7 +54,15 @@ public class PhoneCall : CalamityIncreaser
         // sound is 1s long with 0.05 second delay at start
         vibrationSound.Play();
         yield return new WaitForSeconds(0.05f);
-        cameraShake.ShakeCamera(2, 1f);
-        yield return new WaitForSeconds(1f);
+        //cameraShake.ShakeCamera(2, 1f);
+        float time = 0;
+        while (time < 1f)
+        {
+            rigidbody.AddForce(Random.insideUnitSphere * vibrateSensitivity, ForceMode.Impulse);
+            rigidbody.AddTorque(Random.insideUnitSphere * vibrateSensitivity, ForceMode.Impulse);
+
+            time += Time.deltaTime;
+            yield return null;
+        }
     }
 }
