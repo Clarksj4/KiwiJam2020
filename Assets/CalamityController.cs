@@ -36,6 +36,11 @@ public class CalamityController : MonoBehaviour
     private float endgameStartTime;
     private float elapsedCalamityTimeAtStartOfEnd;
 
+    public AudioSource BlastSource;
+    public float tminusxforblast = 40;
+
+    private bool blastOn = false;
+
     void Start()
     {
         _calamityStartTime = Time.time;
@@ -69,6 +74,20 @@ public class CalamityController : MonoBehaviour
         float elapsedCalamityTime = Time.time - _calamityStartTime;
         float linearCalamityProgress = elapsedCalamityTime / CalamityDuration;
         float calamityProgress = linearCalamityProgress * linearCalamityProgress * linearCalamityProgress * linearCalamityProgress;
+        float remainingCalamityTime = CalamityDuration - elapsedCalamityTime;
+
+        if (!blastOn)
+        {
+            if (remainingCalamityTime < tminusxforblast)
+            {
+                blastOn = true;
+                BlastSource.Play();
+            }
+        }
+        else
+        {
+            BlastSource.volume = Mathf.Lerp(0f, 1f, calamityProgress);
+        }
 
         _colorGrading.temperature.value = Mathf.Lerp(_whiteBalanceStart, WhiteBalanceTarget, calamityProgress);
         if (endgame)
