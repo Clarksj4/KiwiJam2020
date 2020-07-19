@@ -152,7 +152,7 @@ public class CalamityController : MonoBehaviour
 
     public void ResetGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("EndScene");
     }
 }
 

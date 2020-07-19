@@ -46,14 +46,14 @@ MonoBehaviour:
   CalamityDuration: 60
   CalamityMovements:
   - Subject: {fileID: 0}
-    EndPosition: {x: -120, y: 0, z: 0}
+    EndPosition: {x: -200, y: 0, z: 0}
     StartPosition: {x: 0, y: 0, z: 0}
     Rotation: {x: 0, y: 0, z: 0}
     StartRotation: {x: 0, y: 0, z: 0}
     TargetScaleFactor: 1
     StartScale: {x: 0, y: 0, z: 0}
   - Subject: {fileID: 0}
-    EndPosition: {x: 120, y: 0, z: -30}
+    EndPosition: {x: 200, y: 0, z: -50}
     StartPosition: {x: 0, y: 0, z: 0}
     Rotation: {x: 0, y: 0, z: 0}
     StartRotation: {x: 0, y: 0, z: 0}

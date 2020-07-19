@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/MeteorTest.unity
+    guid: 9d0726f02a1ec6d4c9ba7b38954ca9c8
+  - enabled: 1
+    path: Assets/Scenes/EndScene.unity
+    guid: 676ad192bfc269e4ea7fb3ef0b758be3
   m_configObjects: {}
