@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 967d8451a6137704fa7f8575b4ca21c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CalamityDuration: 120
+  CalamityDuration: 90
   CalamityMovements:
   - Subject: {fileID: 0}
     EndPosition: {x: -200, y: 0, z: 0}

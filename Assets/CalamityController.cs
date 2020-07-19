@@ -73,7 +73,7 @@ public class CalamityController : MonoBehaviour
     {
         float elapsedCalamityTime = Time.time - _calamityStartTime;
         float linearCalamityProgress = elapsedCalamityTime / CalamityDuration;
-        float calamityProgress = linearCalamityProgress * linearCalamityProgress * linearCalamityProgress * linearCalamityProgress;
+        float calamityProgress = linearCalamityProgress * linearCalamityProgress * linearCalamityProgress;
         float remainingCalamityTime = CalamityDuration - elapsedCalamityTime;
 
         if (!blastOn)
