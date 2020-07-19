@@ -78,6 +78,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb6caa320d387034794f7915eb0480a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vibrateSensitivity: 0.1
   vibrationSound: {fileID: 2123983439}
   screen: {fileID: 3678150230667051331}
 --- !u!54 &2123983438
@@ -291,6 +292,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3020237346198629329, guid: 667ec66991d39ac4185410ac60e43c4d,
+        type: 3}
+      propertyPath: m_Text
+      value: Prime Minister
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 667ec66991d39ac4185410ac60e43c4d, type: 3}

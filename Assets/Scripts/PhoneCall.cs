@@ -21,7 +21,6 @@ public class PhoneCall : CalamityIncreaser
     {
         rigidbody = GetComponent<Rigidbody>();
         screen.SetActive(false);
-        //phoneCall = StartCoroutine(DoCall());
     }
 
     public override void SetCalamity(float progress)
@@ -32,7 +31,7 @@ public class PhoneCall : CalamityIncreaser
 
         vibrationSound.volume = volume;
 
-        if (progress > 0f && phoneCall == null)
+        if (progress > 0.125f && phoneCall == null)
             phoneCall = StartCoroutine(DoCall());
     }
 
@@ -54,7 +53,6 @@ public class PhoneCall : CalamityIncreaser
         // sound is 1s long with 0.05 second delay at start
         vibrationSound.Play();
         yield return new WaitForSeconds(0.05f);
-        //cameraShake.ShakeCamera(2, 1f);
         float time = 0;
         while (time < 1f)
         {
