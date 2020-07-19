@@ -6558,7 +6558,7 @@ PrefabInstance:
     - target: {fileID: 2674400690234001507, guid: a149fe1ec879c184b80ded15fae4d53e,
         type: 3}
       propertyPath: CalamityDuration
-      value: 20
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 2674400690234001516, guid: a149fe1ec879c184b80ded15fae4d53e,
         type: 3}
