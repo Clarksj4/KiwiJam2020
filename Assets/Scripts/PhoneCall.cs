@@ -32,7 +32,7 @@ public class PhoneCall : CalamityIncreaser
 
         vibrationSound.volume = volume;
 
-        if (progress > 0.01f && phoneCall == null)
+        if (progress > 0f && phoneCall == null)
             phoneCall = StartCoroutine(DoCall());
     }
 
@@ -58,7 +58,6 @@ public class PhoneCall : CalamityIncreaser
         float time = 0;
         while (time < 1f)
         {
-            rigidbody.AddForce(Random.insideUnitSphere * vibrateSensitivity, ForceMode.Impulse);
             rigidbody.AddTorque(Random.insideUnitSphere * vibrateSensitivity, ForceMode.Impulse);
 
             time += Time.deltaTime;
