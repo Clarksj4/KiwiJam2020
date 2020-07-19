@@ -595,7 +595,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHorizontalRotation: 45
   maxVerticalRotation: 15
-  sensitivity: 5
+  sensitivity: 150
 --- !u!1 &969686883989005275
 GameObject:
   m_ObjectHideFlags: 0

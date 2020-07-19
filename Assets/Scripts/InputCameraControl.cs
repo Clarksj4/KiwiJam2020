@@ -45,9 +45,10 @@ public class InputCameraControl : MonoBehaviour
         _previousMousePosition = Input.mousePosition;
     }
 
-    private Vector3 GetMouseInput()
+    private Vector2 GetMouseInput()
     {
-        return Input.mousePosition - _previousMousePosition;
+        return new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+        //return Input.mousePosition - _previousMousePosition;
     }
 
     private IEnumerator DoResetTransform(float duration)
