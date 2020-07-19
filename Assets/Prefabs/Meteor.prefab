@@ -5373,7 +5373,7 @@ MonoBehaviour:
     handleAnimatorMove: 0
     handleAnimatorIK: 0
   fsmTemplate: {fileID: 0}
-  eventHandlerComponentsAdded: 0
+  eventHandlerComponentsAdded: 1
 --- !u!1 &4312820673534016950
 GameObject:
   m_ObjectHideFlags: 0
@@ -10228,6 +10228,7 @@ GameObject:
   - component: {fileID: 6230763629074291298}
   - component: {fileID: 3073866557625899481}
   - component: {fileID: 9040166822540329989}
+  - component: {fileID: 4946895264874407253}
   m_Layer: 0
   m_Name: Core
   m_TagString: Untagged
@@ -10480,7 +10481,21 @@ MonoBehaviour:
     handleAnimatorMove: 0
     handleAnimatorIK: 0
   fsmTemplate: {fileID: 0}
-  eventHandlerComponentsAdded: 0
+  eventHandlerComponentsAdded: 1
+--- !u!114 &4946895264874407253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5621436509249668553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1775717093, guid: e743331561ef77147ae48cda9bcb8209, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TargetFSMs:
+  - {fileID: 9040166822540329989}
 --- !u!1 &7650323815849159898
 GameObject:
   m_ObjectHideFlags: 0

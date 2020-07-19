@@ -109,6 +109,8 @@ public class CalamityController : MonoBehaviour
             float elapsedEndGameTime = Time.time - endgameStartTime;
             float totalTime = elapsedCalamityTimeAtStartOfEnd + elapsedCalamityTimeAtStartOfEnd;
 
+
+
             if (elapsedEndGameTime > 3)
             {
                 ResetGame();
