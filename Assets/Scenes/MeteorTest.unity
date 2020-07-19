@@ -5610,7 +5610,7 @@ PrefabInstance:
     - target: {fileID: 5506657557884026294, guid: 7748c5f2756b4fc418dc213f2506595c,
         type: 3}
       propertyPath: vibrateSensitivity
-      value: 0.05
+      value: 0.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7748c5f2756b4fc418dc213f2506595c, type: 3}
@@ -6555,6 +6555,11 @@ PrefabInstance:
       propertyPath: BlastSource
       value: 
       objectReference: {fileID: 788572365}
+    - target: {fileID: 2674400690234001507, guid: a149fe1ec879c184b80ded15fae4d53e,
+        type: 3}
+      propertyPath: CalamityDuration
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 2674400690234001516, guid: a149fe1ec879c184b80ded15fae4d53e,
         type: 3}
       propertyPath: m_Name
