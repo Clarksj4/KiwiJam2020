@@ -7,6 +7,6 @@ public class GameSetup : MonoBehaviour
     private void Awake()
     {
         Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.Confined;
     }
 }
