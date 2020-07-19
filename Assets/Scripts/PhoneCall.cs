@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class PhoneCall : CalamityIncreaser
 {
     private CameraShake cameraShake;
+    [SerializeField]
+    private AudioSource vibrationSound;
     private GameObject screen;
     private Text callerText;
     private Image callerImage;
@@ -30,11 +32,20 @@ public class PhoneCall : CalamityIncreaser
     {
         while (true)
         {
-            cameraShake.ShakeCamera(2, 0.5f);
+            // Burst -> short pause -> burst -> long pause
+            yield return StartCoroutine(Vibrate());
             yield return new WaitForSeconds(1f);
-            cameraShake.ShakeCamera(2, 0.5f);
-
+            yield return StartCoroutine(Vibrate());
             yield return new WaitForSeconds(2.5f);
         }
+    }
+
+    private IEnumerator Vibrate()
+    {
+        // sound is 1s long with 0.05 second delay at start
+        vibrationSound.Play();
+        yield return new WaitForSeconds(0.05f);
+        cameraShake.ShakeCamera(2, 1f);
+        yield return new WaitForSeconds(1f);
     }
 }
