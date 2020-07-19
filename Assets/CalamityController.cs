@@ -71,7 +71,13 @@ public class CalamityController : MonoBehaviour
         float calamityProgress = linearCalamityProgress * linearCalamityProgress * linearCalamityProgress * linearCalamityProgress;
 
         _colorGrading.temperature.value = Mathf.Lerp(_whiteBalanceStart, WhiteBalanceTarget, calamityProgress);
-        _colorGrading.colorFilter.value = Color.Lerp(_filterStart, FilterTarget, calamityProgress);
+        if (endgame)
+        {
+        }
+        else
+        {
+            _colorGrading.colorFilter.value = Color.Lerp(_filterStart, FilterTarget, calamityProgress);
+        }
 
         Sun.intensity = Mathf.Lerp(startSunIntensity, TargetSunIntensity, calamityProgress);
 
@@ -108,10 +114,11 @@ public class CalamityController : MonoBehaviour
         {
             float elapsedEndGameTime = Time.time - endgameStartTime;
             float totalTime = elapsedCalamityTimeAtStartOfEnd + elapsedCalamityTimeAtStartOfEnd;
+            float endgameProgress = elapsedEndGameTime / 0.5f;
 
+            _colorGrading.colorFilter.value = Color.LerpUnclamped(FilterTarget, Color.white, endgameProgress * endgameProgress * endgameProgress * endgameProgress * endgameProgress * endgameProgress * endgameProgress * endgameProgress);
 
-
-            if (elapsedEndGameTime > 3)
+            if (elapsedEndGameTime > 1)
             {
                 ResetGame();
             }
