@@ -46,8 +46,8 @@ public class CameraShake : CalamityIncreaser
 
         shakeAmount = progress * calamityFactor;
 
-        if (progress >= 1)
-            print("<<<<<");
+        //if (progress >= 1)
+        //    print("<<<<<");
     }
 
     public void ShakeCamera(float amount, float duration)

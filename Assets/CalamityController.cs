@@ -156,7 +156,7 @@ public class CalamityMovement
     public void SetProgress(float progress)
     {
         Subject.localScale = StartScale * Mathf.Lerp(1, TargetScaleFactor, progress);
-        Subject.SetPositionAndRotation(Vector3.Lerp(StartPosition, EndPosition, progress), Quaternion.Euler(Vector3.Slerp(StartRotation, StartRotation + Rotation, progress)));
+        Subject.SetPositionAndRotation(Vector3.LerpUnclamped(StartPosition, EndPosition, progress), Quaternion.Euler(Vector3.Slerp(StartRotation, StartRotation + Rotation, progress)));
     }
 }
 
