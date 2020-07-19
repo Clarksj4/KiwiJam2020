@@ -23,10 +23,10 @@ public class LookUpAnimationControl : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetMouseButtonDown(1))
             lookUpAnimator.SetTrigger("Up");
             
-        else if (Input.GetKeyUp(KeyCode.Space))
+        else if (Input.GetMouseButtonUp(1))
             lookUpAnimator.SetTrigger("Down");
     }
 
