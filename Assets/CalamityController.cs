@@ -232,9 +232,9 @@ public class CalamitySound
     public void SetProgress(float progress)
     {
         float elapsedTime = Time.time - startTime;
-        if (elapsedTime < 0.5f)
+        if (elapsedTime < 1f)
         {
-            AudioSource.volume = Mathf.Lerp(0, StartVolume, progress);
+            AudioSource.volume = Mathf.Lerp(0, StartVolume, elapsedTime);
         }
         else
         {
