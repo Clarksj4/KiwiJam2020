@@ -8,6 +8,7 @@ public class PhoneCall : CalamityIncreaser
     private CameraShake cameraShake;
     [SerializeField]
     private AudioSource vibrationSound;
+    [SerializeField]
     private GameObject screen;
     private Text callerText;
     private Image callerImage;
@@ -17,19 +18,25 @@ public class PhoneCall : CalamityIncreaser
     private void Awake()
     {
         cameraShake = GetComponentInChildren<CameraShake>();
-        phoneCall = StartCoroutine(DoCall());
+        screen.SetActive(false);
+        //phoneCall = StartCoroutine(DoCall());
     }
 
     public override void SetCalamity(float progress)
     {
         base.SetCalamity(progress);
 
-        //if (progress > 0.125f && phoneCall == null)
-        //    phoneCall = StartCoroutine(DoCall());
+        float volume = Mathf.Clamp(1 - progress, 0.1f, 1f);
+
+        vibrationSound.volume = volume;
+
+        if (progress > 0.125f && phoneCall == null)
+            phoneCall = StartCoroutine(DoCall());
     }
 
     private IEnumerator DoCall()
     {
+        screen.SetActive(true);
         while (true)
         {
             // Burst -> short pause -> burst -> long pause
