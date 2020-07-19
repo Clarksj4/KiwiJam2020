@@ -1,10 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PhoneCall : CalamityIncreaser
 {
     private CameraShake cameraShake;
+    private GameObject screen;
+    private Text callerText;
+    private Image callerImage;
 
     private Coroutine phoneCall;
 
